@@ -7,7 +7,7 @@ def readme():
 DESC = "SATOSA extensions components for the Unical context "
 
 setup(name='SATOSA-uniExt',
-      version='0.2.0',
+      version='0.2.1',
       description=DESC,
       long_description=readme(),
       long_description_content_type='text/markdown',
@@ -19,7 +19,7 @@ setup(name='SATOSA-uniExt',
       author_email='giuseppe.demarco@unical.it',
       license='GPL',
       #scripts=[''],
-      packages=['satosa_uniext'],
+      packages=['satosa_uniext/micro_services/processors'],
       install_requires=[
                       'satosa>=6.1.0',
                   ],
