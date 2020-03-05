@@ -7,7 +7,7 @@ def readme():
 DESC = "SATOSA extensions components for the Unical context "
 
 setup(name='SATOSA-uniExt',
-      version='0.2.2',
+      version='0.2.3',
       description=DESC,
       long_description=readme(),
       long_description_content_type='text/markdown',
