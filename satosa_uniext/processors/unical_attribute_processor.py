@@ -15,10 +15,10 @@ class UniAttributeProcessor:
             result = re.match(rs_regexp, uniqueid, re.I)
             if result:
                 data = result.groupdict()
-                #if data.get('nation') == 'IT' and data.get('doc_type') in  ['CF', 'TIN']:
+                #if data.get('nation') == 'it' and data.get('doc_type') in  ['CF', 'TIN']:
                 if nationprefix:
                     # returns IT:CODICEFISCALE
-                    return nationprefix_sep.join((data['nation'],
+                    return nationprefix_sep.join((data['nation'].lower(),
                                                   data['uniqueid']))
                 # returns CODICEFISCALE
                 return data['uniqueid']
@@ -35,7 +35,7 @@ class UniAttributeProcessor:
                 data = result.groupdict()
                 if nationprefix:
                     # returns IT:CODICEFISCALE
-                    return nationprefix_sep.join((data['nation'],
+                    return nationprefix_sep.join((data['nation'].lower(),
                                                   data['uniqueid']))
                 # returns CODICEFISCALE
                 return data['uniqueid']
@@ -91,7 +91,7 @@ class UnicalLegacyAttributeGenerator(BaseProcessor):
         if v:
             fiscalNumber = UniAttributeProcessor.codice_fiscale_spid(attributes[v])
             # put a fake 'schacpersonaluniqueid' to do ldap account linking with the next microservice
-            attributes['schacpersonaluniqueid'] = 'urn:schac:personalUniqueID:IT:CF:{}'.format(fiscalNumber)
+            attributes['schacpersonaluniqueid'] = 'urn:schac:personalUniqueID:it:CF:{}'.format(fiscalNumber)
             return fiscalNumber
 
     def process(self, internal_data, attribute, **kwargs):
