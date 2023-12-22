@@ -94,6 +94,15 @@ class UnicalLegacyAttributeGenerator(BaseProcessor):
             attributes['schacpersonaluniqueid'] = 'urn:schac:personalUniqueID:it:CF:{}'.format(fiscalNumber)
             return fiscalNumber
 
+    def externalIDPType(self, attributes):
+        if attributes.get('spidCode'):
+            return 'spid'
+
+    def externalIDPLoA(self, attributes):
+        if attributes.get('spidCode'):
+            return 'LoA3'
+        return 'LoA2'
+
     def process(self, internal_data, attribute, **kwargs):
         if hasattr(self, attribute) and callable(getattr(self, attribute)):
             internal_data.attributes[attribute] = getattr(self, attribute)(internal_data.attributes)
