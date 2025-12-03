@@ -50,8 +50,16 @@ class UniAttributeProcessor:
                    'ORGNAME:'
                    'IDSTRING:'
                    r'(?P<uniqueid>[\w]+)').replace('IDSTRING', id_string).replace('ORGNAME', orgname)
+
+        _regexp_esi = (r'(?P<urn_prefix>urn:schac:personalUniqueCode:int:esi:)?'
+                   'ORGNAME:'
+                   r'(?P<uniqueid>[\w]+)').replace('ORGNAME', orgname)
+                   
         for uniqueid in personalUniqueCodes:
-            result = re.match(_regexp, uniqueid, re.I)
+            if id_string == 'studente':
+                result = re.match(_regexp_esi, uniqueid, re.I)
+            else:
+                result = re.match(_regexp, uniqueid, re.I)
             if result:
                 return result.groupdict()['uniqueid']
 
